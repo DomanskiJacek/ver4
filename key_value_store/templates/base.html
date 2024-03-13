@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block title %}
+    <title>Key Value Pairs App</title>
+    {% endblock %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div>{% block content %}{% endblock %}</div>
+    </div>
+  </body>
+  {% csrf_token %}
+</html>
+<script>src="{% static 'js/base.js' %}"</script>
+<script>
+  // This is how you find the csrf_token in the document manually (see line 18)
+  const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+  countLoad(location.pathname, csrftoken)
+</script>

@@ -1,0 +1,104 @@
+{% extends 'base.html' %} 
+{% block content %}
+{% load bootstrap_icons %}
+{% load static %}
+{{ items|json_script:"keyValuePairs"}}
+<section class="container">
+
+  <div class="add-container-container flex">
+    <button id="add-row" class="add-container flex pointer" onClick="addData()">
+      <span id="add-text">Add</span>
+      {% bs_icon 'plus-lg' size='18px' %}
+    </button>
+  </div>
+  <table class="table">
+          <!-- Table main -->
+    <tbody id="tbody">
+      <tr>
+        <th></th>
+        <th>Key</th>
+        <th>Value</th>
+        <th></th>
+      </tr>
+    {% for keyValuePair in keyValuePair_list %}
+      <tr id="{{keyValuePair.id}}" class="key-value-row">
+        <td>
+          <div class="icon-container flex">
+            <img src="../static/img/checkmark-black.png" alt="checkmark" />
+          </div>
+        </td>
+        <td><textarea class="key" rows="1" disabled>{{keyValuePair.key}}</textarea></td>
+        <td class="value-td">
+          <textarea class="value" rows="1" disabled>{{keyValuePair.value}}</textarea>
+        </td>
+        <td>
+          <div class="icon-container flex pointer position-relative" onClick="deleteData(this)">
+            <img src="../static/img/x.png" alt="delete-button" />
+            <div id="delete-popup-{{keyValuePair.id}}" class="popup" onclick="confirmDelete(this)">
+              <span class="popuptext">
+                Confirm <br />
+                <button class="delete-button">
+                  Delete
+                </button>
+              </span>  
+            </div>    
+          </div>
+        </td>
+      </tr>
+    {% endfor %}
+    <!-- Table footer -->
+  </tbody>
+  <tr id="table-footer-row">
+    <td id="table-footer" colspan="4">Keys stored: <span id="stored-count"> {{ items }} </span></td>
+  </tr>
+
+  </table>
+  <div class="refresh-save-container-container flex">
+    <div id="info-text-container" class="flex">
+      <img id="information-icon" src="../static/img/information-icon.png" alt="exclamation mark" />
+      <span id="info-text">Use this table to store Unique Keys and Values for your project.
+        Check out this example to get you started.</span>
+    </div>
+    <div id="refresh-save-container" class="flex">
+      <button class="refresh-container flex pointer" onClick="refresh()">
+        <img class="refresh-icon" src="../static/img/refresh.png" alt="refresh-icon" loading="lazy"/>
+      </button>
+       <div id="save-container" class="flex pointer disable-events" onClick="confirmAdd()">
+        <span id="save-text">Save</span>
+        <img class="disable-events" src="../static/img/Subtract.png" alt="upload-icon" />
+      </div>
+    </div>
+  </div>
+  <div id="error-container"></div>
+  
+  <table class="table">
+    <caption>This is an example. The database will be updated on every page hit.</caption>
+    <thead>
+      <tr>
+        <th>Url</th>
+        <th>Hits</th>
+      </tr>
+    </thead>
+    <tbody id="tbody">
+      
+      {% for item in page_count_list %}
+      <tr id="{{item.id}}" class="key-value-row">
+        <td>{{ item.url }}</td>
+        <td class="value-td">
+          {{item.hits}}
+        </td>
+      </tr>
+      {% endfor %}
+      
+    </tbody>
+  </table>
+
+</section>
+
+<!-- SCRIPTS -->
+<script src="{% static 'js/data.js' %}"></script>
+<script src="{% static 'js/base.js' %}"></script>
+<script>
+  checkArray(keyValuePairArrayLength) 
+</script>
+{% endblock %}

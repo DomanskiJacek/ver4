@@ -1,0 +1,320 @@
+:root {
+  /* Variables */
+  --save-add-margin: .7rem;
+  --weak-border: 1px solid #DDD;
+  --strong-border: 1px solid #000;
+  --big-font-size: 18px;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+textarea {
+  padding: .2rem .1rem;
+  resize: none;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 16px;
+  border: none;
+  width: 99%; /* To avoid the textarea overflow the table cell */
+  overflow-wrap: break-word;
+  vertical-align: middle;
+}
+textarea:focus,
+textarea:active {
+  outline: none;
+}
+
+textarea::placeholder {
+  font-style: italic;
+}
+
+textarea:disabled {
+  background: white;
+  color: black;
+  font-size: 16px;
+}
+
+caption {
+  margin-bottom: .5rem;
+}
+
+/* CLASSES AND IDS*/
+
+.flex {
+  display: flex;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.disable-events {
+  pointer-events: none;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.container {
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px;
+  margin: 0 auto;
+  width: 600px;
+}
+
+.add-container-container {
+  justify-content: right;
+  align-items: center;
+  margin-bottom: var(--save-add-margin);
+}
+.add-container {
+  border: var(--weak-border);
+  border-radius: 40px;
+  width: 106px;
+  height: 44px;
+  background-color: white;
+  font-size: var(--big-font-size);
+}
+.icon-container,
+.add-container {
+  align-items: center;
+  justify-content: center;
+}
+.refresh-save-container-container {
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--save-add-margin);
+  margin-bottom: 2rem;
+}
+#save-container {
+  align-items: center;
+  justify-content: center;
+  border: var(--weak-border);
+  border-radius: 20px;
+  width: 130px;
+  height: 44px;
+  font-size: var(--big-font-size);
+  opacity: 40%;
+}
+/* #refresh-container {
+  justify-content: center;
+  align-items: center;
+  border: var(--strong-border);
+  border-radius: 50%;
+  margin-right: .5rem;
+} */
+
+.refresh-container {
+  justify-content: center;
+  align-items: center;
+  border: var(--weak-border);
+  border-radius: 50%;
+  height: fit-content;
+  margin-right: .5rem;
+  height: 44px;
+  width: 44px;
+  background: white;
+}
+#info-text-container {
+  margin-right:4rem;
+}
+#error-container {
+  height: 25px;
+  margin: 1rem 0;
+  font-weight: 700;
+  font-size: var(--big-font-size);
+  text-align: center;
+  color: #FF0000;
+}
+#save-text,
+#add-text {
+  margin-right: .7rem;
+}
+
+#info-text {
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+.refresh-icon {
+  padding: .72rem;
+}
+
+#information-icon {
+  transform: scale(.75);
+  margin: 0 .6rem
+}
+
+.confirm-delete-text {
+  position: absolute;
+  right: -150%;
+  color: red;
+}
+
+
+/* Table */
+
+.table-top-row {
+  border: none;
+  text-align: right;
+}
+#table-footer {
+  text-align: right;
+  background: #EFEFEF;
+}
+.table-addrow-x {
+  text-align: center;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th {
+  background: #EFEFEF;
+  text-align: left;
+}
+td, 
+th {
+  border: var(--weak-border);
+  padding: 7px;
+  width: 40%;
+}
+td:nth-child(4),
+th:nth-child(4),
+td:nth-child(1),
+th:nth-child(1) {
+  width: 10%;
+}
+/* 
+
+/* #buttons */
+.button-confirm,
+.button-cancel {
+font-size: 15px;
+font-weight: 600;
+font-stretch: normal;
+font-style: normal;
+line-height: 1.17;
+letter-spacing: normal;
+text-align: center;
+white-space: nowrap;
+position: relative;
+cursor: pointer;
+height: 40px;
+padding-left: 20px;
+padding-right: 20px;
+border-radius: 25px;
+border: 0;
+display: inline-block;
+text-decoration: none;
+margin: 0 .5rem
+}
+.button-confirm {
+  color: white;
+  background-color: #04aa6d;
+}
+.button-confirm:hover {
+  background-color: #059862;
+}
+.button-confirm:active,
+.button-confirm:focus {
+background-color: #03744b;
+}
+.button-confirm:focus {
+  box-shadow: 0 0 0 0.2rem rgba(5, 152, 98, 0.5);
+  outline: 0;
+}
+
+.button-cancel {
+  background-color: #d9212c;
+  color: white;
+}
+.button-cancel:hover {
+  background-color: #c5212c;
+}
+.button-cancel:active,
+.button-cancel:focus {
+  background-color: #a7212c;
+}
+.button-cancel:focus {
+  box-shadow: 0 0 0 0.2rem rgba(217, 33, 44, 0.5);
+  outline: 0;
+}
+.button-container,
+.modal-button-container {
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+}
+.button-container {
+  display: none;
+}
+/* #endbuttons */
+
+/* Delete popup */
+.popup {
+  position: absolute;
+  cursor: pointer;
+  user-select: none;
+  display: none;
+  left: 63px;
+  width: 80px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.popup .popuptext {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;  
+  width: 78px;
+  height: 71px;  
+  background: #FFFFFF;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
+
+.popup::after {
+  content: " ";
+  position: absolute;
+  left: -10px;
+  top: 30px;
+  border-top: 7px solid transparent;
+  border-right: 10px solid black;
+  border-left: none;
+  border-bottom: 7px solid transparent;
+}
+
+.delete-button {
+  padding: 5px 10px;
+  cursor: inherit;
+  width: 58px;
+  height: 28px;
+  background: white;
+  border-radius: 40px;
+  border: 1px solid #ff0000;
+  color: #ff0000;
+}
+
+
+@media screen and (max-width: 800px) {
+  textarea {
+    min-width: 150px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .container {
+    width: 80%;
+  }
+  textarea {
+    min-width: 100px;
+  }
+}
